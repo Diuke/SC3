@@ -1,0 +1,32 @@
+<div class="wrapper fadeInDown mt-5">
+  <div id="formContent">
+    <!-- Tabs Titles -->
+
+    <!-- Icon --> 
+    <div class="fadeIn first">
+      <h1>Salida de Campo 3</h1>
+    </div>
+
+    <div>
+      <input type="text" [formControl]="userName" class="fadeIn second" placeholder="Usuario Uninorte">
+      <input type="password" [formControl]="password" class="fadeIn third" placeholder="Código">
+      <button class="fadeIn fourth btn" (click)="tryLogin()" >Log In</button>
+    </div>
+  </div>
+</div>
+
+
+
+<ng-template #content let-modal>
+  <div class="modal-header">
+    <h4 class="modal-title">Error.</h4>
+  </div>
+
+  <div class="modal-body">
+    <h4>Usuario o contraseña incorrectos</h4>
+  </div>
+    
+  <div class="modal-footer">
+    <button type="button" class="btn btn-outline-dark" (click)="modal.close()">Cerrar</button>
+  </div>
+</ng-template>
