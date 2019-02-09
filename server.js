@@ -30,13 +30,15 @@ app.route('/api/login').post((req, res) => {
 				return res.status(401).send(error)
 			} else {
 				data = search;
+				console.log(data.codigo == password);
 				if(data.codigo == password){
 					var tokens = dbo.collection('tokens');
 					var new_id = guid();
-					tokens.updateOne({'usuario': user}, {
-						'usuario': user,
-						'token': new_id
-					}, { upsert : true }, (err, success)=> {
+					tokens.updateOne({'usuario': user}, 
+						{$set:{ 'usuario': user, 'token': new_id } }, 
+						{ upsert : true }, 
+						(err, success)=> {
+						console.log(err)
 						if(err) return res.status(400).send(err);
 						db.close();
 						return res.status(200).send({"token": new_id});
